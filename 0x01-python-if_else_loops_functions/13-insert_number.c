@@ -1,61 +1,42 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
+/**
+ * insert_node - inserts a number into a sorted singly linked list.
+ * @head: list head
+ * @number: number to store in the new node
+ * Return: pointer to the new node
+ */
 listint_t *insert_node(listint_t **head, int number)
 {
-    listint_t *new_node = malloc(sizeof(listint_t));
-    listint_t *current_node = *head;
-    listint_t *prev_node = NULL;
+        listint_t *runner;
+        listint_t *new;
 
-    if (!new_node)
-        return NULL;
+        runner = *head;
 
-    new_node->n = number;
-    new_node->next = NULL;
+        new = malloc(sizeof(listint_t));
+        if (new == NULL)
+                return (NULL);
+        new->n = number;
 
-    if (!*head)
-        *head = new_node;
-    else if (current_node->n > number)
-    {
-        new_node->next = current_node;
-        *head = new_node;
-    }
-    else
-    {
-        while (current_node && current_node->n < number)
+        if (*head == NULL || (*head)->n > number)
         {
-            prev_node = current_node;
-            current_node = current_node->next;
+                new->next = *head;
+                *head = new;
+                return (new);
         }
 
-        new_node->next = current_node;
-        prev_node->next = new_node;
-    }
+        while (runner->next != NULL)
+        {
+                if ((runner->next)->n >= number)
+                {
+                        new->next = runner->next;
+                        runner->next = new;
+                        return (new);
+                }
+                runner = runner->next;
+        }
 
-    return new_node;
-}
-
-int main(void)
-{
-    listint_t *head;
-
-    head = NULL;
-    add_nodeint_end(&head, 0);
-    add_nodeint_end(&head, 10);
-    add_nodeint_end(&head, 20);
-    add_nodeint_end(&head, 30);
-    add_nodeint_end(&head, 40);
-
-    printf("Original list:\n");
-    print_listint(head);
-
-    insert_node(&head, 27);
-
-    printf("List after adding new node:\n");
-    print_listint(head);
-
-    free_listint(head);
-
-    return (0);
+        new->next = NULL;
+        runner->next = new;
+        return (new);
 }
