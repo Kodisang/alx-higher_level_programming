@@ -1,15 +1,20 @@
 #!/usr/bin/python3
-FIZZ = "Fizz"
-BUZZ = "Buzz"
 
-
+# FizzBuzz function that prints numbers from 1 to 100 with special cases for multiples of 3 and 5
 def fizzbuzz():
-    for number in range(1, 101):
-        if (number % 3 and number % 5):
-            print("%s%s" % (FIZZ, BUZZ), end=' ')
-        elif (number % 3):
-            print("%s" % (FIZZ), end=' ')
-        elif (number % 5):
-            print("%s" % (BUZZ), end=' ')
+    for i in range(1, 101):
+        # If i is a multiple of both 3 and 5, print "FizzBuzz"
+        if i % 3 == 0 and i % 5 == 0:
+            print("FizzBuzz", end=' ')
+        # If i is a multiple of 3, print "Fizz"
+        elif i % 3 == 0:
+            print("Fizz", end=' ')
+        # If i is a multiple of 5, print "Buzz"
+        elif i % 5 == 0:
+            print("Buzz", end=' ')
+        # Otherwise, print i
         else:
-            print("%d" % (number), end=' ')
+            print(i, end=' ')
+
+# Test the function
+fizzbuzz()
