@@ -1,21 +1,9 @@
 #!/bin/bash
-# This script runs the Python file specified in the environment variable $PYFILE
+python_script=$PYFILE
 
-python_script="$PYFILE"
-
-if [ -z "$python_script" ]; then
-  echo "Error: PYFILE environment variable is not set."
-  exit 1
+if [ ! -f $python_script ]; then
+    echo "File $python_script not found"
+    exit 1
 fi
 
-if [ ! -f "$python_script" ]; then
-  echo "Error: File '$python_script' not found."
-  exit 1
-fi
-
-if [ ! -x "$python_script" ]; then
-  echo "Error: File '$python_script' is not executable."
-  exit 1
-fi
-
-python3 "$python_script"
+python3 $python_script
