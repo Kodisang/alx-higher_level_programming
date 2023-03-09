@@ -7,3 +7,4 @@ if [ ! -f $python_script ]; then
 fi
 
 python3 $python_script
+
