@@ -1,10 +1,8 @@
 #!/bin/bash
-python_script=$PYFILE
 
-if [ ! -f $python_script ]; then
-    echo "File $python_script not found"
+if [ ! -f "$PYFILE" ]; then
+    echo "Error: $PYFILE not found"
     exit 1
 fi
 
-python3 $python_script
-
+python3 "$PYFILE"
