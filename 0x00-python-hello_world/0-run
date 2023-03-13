@@ -1,3 +1,8 @@
 #!/bin/bash
-python3 $PYFILE
 
+if [ ! -f "$PYFILE" ]; then
+    echo "Error: $PYFILE not found"
+    exit 1
+fi
+
+python3 "$PYFILE"
