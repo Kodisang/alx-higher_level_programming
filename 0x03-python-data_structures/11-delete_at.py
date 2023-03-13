@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-def delete_at(my_list=[], idx=0):
-    if idx < 0 or idx > len(my_list) - 1:
-        return my_list
-    else:
-        del my_list[idx]
-    return
+
+def divisible_by_2(my_list=[]):
+    """Find all multiples of 2 in a list."""
+    return [True if i % 2 == 0 else False for i in my_list]
