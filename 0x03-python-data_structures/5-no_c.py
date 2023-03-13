@@ -1,9 +1,4 @@
 #!/usr/bin/python3
-
-
-def replace_in_list(my_list, idx, element):
-    if (idx < 0) or (idx > len(my_list) - 1):
-        return my_list
-    else:
-        my_list[idx] = element
-        return my_list
+def no_c(my_string):
+    new_string = my_string.translate({ord(i): None for i in 'cC'})
+    return new_string
